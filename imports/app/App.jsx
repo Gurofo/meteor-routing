@@ -1,6 +1,7 @@
 import React from "react";
 import { ApolloProvider } from "react-apollo";
 import { ApolloLink, from } from "apollo-link";
+import { withClientState } from "apollo-link-state";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -17,8 +18,11 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const cache = new InMemoryCache({
-  dataIdFromUser: user => user._id
+const cache = new InMemoryCache();
+
+const stateLink = withClientState({
+  cache,
+  defaults: {}
 });
 
 const client = new ApolloClient({
@@ -26,8 +30,10 @@ const client = new ApolloClient({
   cache
 });
 
-export default (App = () => (
-  <ApolloProvider client={client}>
-    <Router />
-  </ApolloProvider>
-));
+export default (App = () => {
+  return (
+    <ApolloProvider client={client}>
+      <Router />
+    </ApolloProvider>
+  );
+});

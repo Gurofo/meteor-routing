@@ -1,0 +1,9 @@
+type User {
+  _id: String
+  email: String
+  isEmployer: Boolean
+}
+
+type Query {
+  user: User
+}

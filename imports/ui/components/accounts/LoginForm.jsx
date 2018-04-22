@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Accounts } from "meteor/accounts-base";
 import { wihApollo, withApollo } from "react-apollo";
+import { withRouter } from "react-router-dom";
 
 class LoginForm extends Component {
   login = event => {
     event.preventDefault();
+    const { client } = this.props;
     Meteor.loginWithPassword(this.email.value, this.password.value, error => {
-      console.log(error);
       if (!error) {
-        this.props.client.resetStore();
+        client.resetStore();
       }
     });
   };
