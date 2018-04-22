@@ -12,8 +12,6 @@ import SettingsPage from "../../pages/SettingsPage";
 import SigninPage from "../../pages/SigninPage";
 import SignupPage from "../../pages/SignupPage";
 
-const Component = () => <h1>Component</h1>;
-
 const Router = ({ loading, user }) => {
   if (!loading) {
     return (
