@@ -42,7 +42,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import ActionHome from 'material-ui/svg-icons/action/home';
 import { PropTypes } from "prop-types";
 
 class Login extends Component {
@@ -110,6 +110,7 @@ class AppBarComponent extends Component {
         <AppBar
           logout={this.props.logout}
           title="Title"
+          iconElementLeft={<IconButton><Link to="/"><ActionHome /></Link></IconButton>}
           iconElementRight={this.props.loggedState.logged ? <Logged logout={{logoutProps}}/> : <Login login={{loggedState}}/>}
         />
         

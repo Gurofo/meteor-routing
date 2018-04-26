@@ -25,7 +25,6 @@ class DashboardPage extends Component {
 
   render() {
     let loggedState = this.state;
-    console.log(this.state);
     return (
       <div>
        
