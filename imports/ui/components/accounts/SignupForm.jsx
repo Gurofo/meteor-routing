@@ -4,6 +4,18 @@ import { withApollo } from "react-apollo";
 import { withRouter } from "react-router-dom";
 import MenuBar from '../AppBar';
 
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+
+
+const styles = {
+  form: {
+    margin: 'auto',
+    width: 500,
+    marginTop: 50,
+  },
+};
+
 class SignupForm extends Component {
   constructor(props){
     super(props)
@@ -16,6 +28,7 @@ class SignupForm extends Component {
   registerUser = event => {
     event.preventDefault();
     const { history } = this.props;
+    
     Accounts.createUser(
       {
         email: this.email.value,
@@ -40,18 +53,38 @@ class SignupForm extends Component {
 
   render() {
     let loggedState = this.state.logged;
-    console.log(this.state.logged)
     return (
       <div>
         <MenuBar loggedState={loggedState}/>
-        <form onSubmit={this.registerUser}>
+        <form onSubmit={this.registerUser} 
+          style={ styles.form }>
           <input type="email" ref={input => (this.email = input)} />
           <input type="password" ref={input => (this.password = input)} />
+         {/*} <TextField
+            name="email"
+            hintText="Email"
+            floatingLabelText="Email"
+            value={this.state.email}
+            onChange={e => this.change(e)}
+            fullWidth={true}
+          />
+           <TextField
+            name="password"
+            hintText="Password"
+            floatingLabelText="Password"
+            value={this.state.password}
+            onChange={e => this.change(e)}
+            type="password"
+            fullWidth={true}
+          />*/}
           <p onClick={this.toggleEmployer}>
             isEmployer: {this.state.isEmployer + ""}
           </p>
-          <button type="submit">Register User</button>
+          
+          <RaisedButton type="submit" fullWidth={true} label="Submit" />
+          
         </form>
+        
       </div>
     );
   }

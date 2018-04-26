@@ -7,6 +7,13 @@ import MenuBar from '../AppBar';
 //css material-ui
 import RaisedButton from 'material-ui/RaisedButton';
 
+const styles = {
+  form: {
+    margin: 'auto',
+    width: 500,
+    marginTop: 50,
+  },
+};
 
 class LoginForm extends Component {
   constructor(props){
@@ -32,14 +39,13 @@ class LoginForm extends Component {
 
   render() {
     let loggedState = this.state.logged;
-    console.log(loggedState);
     return (
       <div>
         <MenuBar 
           loginProps={this.login}
           loggedState={loggedState}
         />
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} style={ styles.form }>
           <input type="email" ref={input => (this.email = input)} />
           <input type="password" ref={input => (this.password = input)} />    
           <RaisedButton label="Enter" fullWidth={true} type="submit"/>

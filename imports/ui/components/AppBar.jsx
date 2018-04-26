@@ -51,7 +51,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-     <Link to="/signin"> <FlatButton {...this.props} label='login' onClick={()=>{console.log(this.props.login.loginProps)}}/> </Link>
+     <Link to="/signin"> <FlatButton {...this.props} label='login' /> </Link>
      <Link to="/signup"> <FlatButton {...this.props} label='sign up' /> </Link>
       </div>
     );
@@ -100,17 +100,16 @@ class AppBarComponent extends Component {
     //console.log(logoutProps);
     return (
       <div>
-        <Toggle
+        {/*<Toggle
           label="Logged"
           defaultToggled={this.logged}
           onToggle={this.handleChange}
           labelPosition="right"
           style={{margin: 20}}
-        />
+        />*/}
         <AppBar
           logout={this.props.logout}
           title="Title"
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
           iconElementRight={this.props.loggedState.logged ? <Logged logout={{logoutProps}}/> : <Login login={{loggedState}}/>}
         />
         

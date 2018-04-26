@@ -34,7 +34,7 @@ class DashboardPage extends Component {
         loggedState={loggedState}
         />
         <h1>DashboardPage</h1>
-        <p onClick={this.logout}>Logout</p>
+        {/*<p onClick={this.logout}>Logout</p>*/}
       </div>
     );
   }
