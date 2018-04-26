@@ -5,9 +5,13 @@ import { withRouter } from "react-router-dom";
 import MenuBar from '../AppBar';
 
 class SignupForm extends Component {
-  state = {
-    isEmployer: false
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      logged: false,
+      isEmployer: false
+    };
+  }
 
   registerUser = event => {
     event.preventDefault();
@@ -35,9 +39,11 @@ class SignupForm extends Component {
   };
 
   render() {
+    let loggedState = this.state.logged;
+    console.log(this.state.logged)
     return (
       <div>
-        <MenuBar/>
+        <MenuBar loggedState={loggedState}/>
         <form onSubmit={this.registerUser}>
           <input type="email" ref={input => (this.email = input)} />
           <input type="password" ref={input => (this.password = input)} />

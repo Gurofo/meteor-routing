@@ -4,11 +4,20 @@ import MenuBar from '../components/AppBar';
 
 
 class LandingPage extends Component {
-  state = {};
+  constructor(props){
+    super(props)
+    this.state = {
+      logged: false,
+    };
+  }
+
   render() {
+    let loggedState = this.state.logged;
     return (
       <div>
-        <MenuBar />
+        <MenuBar 
+          loggedState={loggedState}
+        />
         <h1>Index</h1>
       </div>
     );
