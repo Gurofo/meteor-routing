@@ -15,11 +15,11 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const muiTheme = getMuiTheme({
   palette: {
-    textColor: green500 ,
+    
   },
   appBar: {
     height: 60,
-    color: '#F5F5F5',
+    
   },
 });
 
