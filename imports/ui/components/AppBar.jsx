@@ -59,7 +59,7 @@ class Login extends Component {
 }
 
 const Logged = (props) => (
-  
+
   <IconMenu
     {...props}
     iconButtonElement={
@@ -70,7 +70,7 @@ const Logged = (props) => (
   >
     <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Settings" />
-    <MenuItem primaryText="Sign out" />
+    <MenuItem primaryText="Sign out" onClick={props.logout.logoutProps}/>
   </IconMenu>
 );
 
@@ -90,11 +90,13 @@ class AppBarComponent extends Component {
 
   handleChange = (event, logged) => {
     this.setState({logged: logged});
-    console.log(logged);
+    console.log(this.props);
   };
 
   render() {
-    
+    let loggedFromState  = this.state;
+    let logoutProps = this.props.logoutProps;
+    console.log(logoutProps);
     return (
       <div>
         <Toggle
@@ -108,7 +110,7 @@ class AppBarComponent extends Component {
           logout={this.props.logout}
           title="Title"
           iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          iconElementRight={this.state.logged ? <Logged logout={{logoutProps}}/> : <Login />}
         />
         
       </div>
@@ -116,6 +118,6 @@ class AppBarComponent extends Component {
   }
 }
 AppBarComponent.propTypes = {
-  loggedState: PropTypes.bool
+  logout: PropTypes.func
 };
 export default AppBarComponent;

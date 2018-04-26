@@ -10,7 +10,7 @@ class DashboardPage extends Component {
     };
   }
 
-  logout = (logged) => {
+  logout = () => {
     const { client } = this.props;
 
     Meteor.logout(error => {
@@ -20,12 +20,13 @@ class DashboardPage extends Component {
 
 
   render() {
-    let {loggedState} = logged;
+    let {loggedState} = this.state;
     console.log(loggedState);
     return (
       <div>
        
         <MenuBar 
+        logoutProps={this.logout}
         />
         <h1>DashboardPage</h1>
         <p onClick={this.logout}>Logout</p>
