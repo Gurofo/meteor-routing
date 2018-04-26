@@ -8,6 +8,21 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import Router from "../ui/components/router/Router";
 
+//Material-ui
+import {green500} from 'material-ui/styles/colors';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    textColor: green500 ,
+  },
+  appBar: {
+    height: 60,
+    color: '#F5F5F5',
+  },
+});
+
 const httpLink = new HttpLink({
   uri: Meteor.absoluteUrl("graphql")
 });
@@ -32,8 +47,12 @@ const client = new ApolloClient({
 
 export default (App = () => {
   return (
-    <ApolloProvider client={client}>
-      <Router />
-    </ApolloProvider>
+    
+      <ApolloProvider client={client}>
+          <MuiThemeProvider muiTheme={muiTheme}>
+            <Router />
+          </MuiThemeProvider>
+      </ApolloProvider>
+    
   );
 });

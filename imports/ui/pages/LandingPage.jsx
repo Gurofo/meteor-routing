@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import MenuBar from '../components/AppBar';
+
 
 class LandingPage extends Component {
   state = {};
   render() {
     return (
       <div>
-        <h1>LandingPage</h1>
-        <ul>
-          <li>
-            <Link to="/signin">SIGN IN</Link>
-          </li>
-          <li>
-            <Link to="/signup">SIGN UP</Link>
-          </li>
-        </ul>
+        <MenuBar />
+        <h1>Index</h1>
       </div>
     );
   }
